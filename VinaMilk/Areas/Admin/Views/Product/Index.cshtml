@@ -1,0 +1,72 @@
+﻿@model PagedList.IPagedList<Models.EF.SanPham>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Quản Lý Sản Phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-lg-12">
+        <h2 style="display: flex; justify-content: center; font-size: 35px; font-weight: 400">Quản Lý Sản Phẩm</h2>
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary"></h6>
+            </div>
+            <div class="card-body">
+                @using (Html.BeginForm("Index", "Product", FormMethod.Get))
+                {
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="col-md-4">
+                                <input style="border-radius: 15px; width: 300px; padding: 10px; outline-color: #27f;border-color:#000" type="text" value="@ViewBag.SearchString" name="searchString" placeholder="Nhập Từ Khóa Tìm Kiếm..." />
+                            </div>
+                            <div class="col-md-4">
+                                <button type="submit" value="Tìm Kiếm" style="margin: 10px 0; border-radius: 10px; border-color: #27f;color:#fff; width: 60px; background-color: #27f ">Tìm</button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            <div class="table-responsive" style="width:100%;">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Mã Sản Phẩm</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Hình ảnh</th>
+                            <th>Giá</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>@item.MaSP</td>
+                            <td>@item.TenSP</td>
+                            <td>
+                                <img style="max-width: 100%; width: 250px; " class="image_product" src="~/Assest/Admin/img/images/@item.Anh" />
+                            </td>
+                            <td>@Html.DisplayFor(Model => item.GiaHT) VNĐ</td>
+                            <td colspan="4">
+                                <div style="display:flex;flex-direction:column;">
+                                    <a style="text-align:center;padding: 5px 0; color: #fff; border-radius: 5px;" href="/Admin/Product/Create" class="btn-success">
+                                        Thêm Sản Phẩm
+                                    </a>
+                                    <hr />
+                                    <a style="text-align: center; padding: 5px 0; color: #fff; border-radius: 5px;" href="/Admin/Product/Edit?MaSP/@item.MaSP" class="btn-warning">Sửa Sản Phẩm</a>
+                                    <hr />
+                                    <a style="text-align: center; padding: 5px 0; color: #fff; border-radius: 5px; " href="/Admin/Product/Delete?MaSP/@item.MaSP" class="btn-danger">Xóa Sản Phẩm</a>
+                                </div>
+                            </td>
+                        </tr>
+                         }
+                        </tbody>
+                    </table>
+                <div style="display:flex;justify-content:space-around">
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString }))
+                </div>
+            </div>
+            </div>
+        </div>
+
+    </div>
+</div>

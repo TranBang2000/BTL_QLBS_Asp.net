@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VinaMilk", "VinaMilk\VinaMilk.csproj", "{79E95144-481E-4133-9869-678130FA444B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{08AA2CB5-8F6E-4389-8DF9-E44FFC423736}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{79E95144-481E-4133-9869-678130FA444B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79E95144-481E-4133-9869-678130FA444B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79E95144-481E-4133-9869-678130FA444B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79E95144-481E-4133-9869-678130FA444B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08AA2CB5-8F6E-4389-8DF9-E44FFC423736}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08AA2CB5-8F6E-4389-8DF9-E44FFC423736}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08AA2CB5-8F6E-4389-8DF9-E44FFC423736}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08AA2CB5-8F6E-4389-8DF9-E44FFC423736}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E2D4C0CA-FC06-4F7B-87C2-F81E5F5091E9}
+	EndGlobalSection
+EndGlobal
