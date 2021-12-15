@@ -25,46 +25,51 @@
                         </div>
                     </div>
                 }
-            <div class="table-responsive" style="width:100%;">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>Mã Sản Phẩm</th>
-                            <th>Tên sản phẩm</th>
-                            <th>Hình ảnh</th>
-                            <th>Giá</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
-                        <tr>
-                            <td>@item.MaSP</td>
-                            <td>@item.TenSP</td>
-                            <td>
-                                <img style="max-width: 100%; width: 250px; " class="image_product" src="~/Assest/Admin/img/images/@item.Anh" />
-                            </td>
-                            <td>@Html.DisplayFor(Model => item.GiaHT) VNĐ</td>
-                            <td colspan="4">
-                                <div style="display:flex;flex-direction:column;">
-                                    <a style="text-align:center;padding: 5px 0; color: #fff; border-radius: 5px;" href="/Admin/Product/Create" class="btn-success">
-                                        Thêm Sản Phẩm
-                                    </a>
-                                    <hr />
-                                    <a style="text-align: center; padding: 5px 0; color: #fff; border-radius: 5px;" href="/Admin/Product/Edit?MaSP/@item.MaSP" class="btn-warning">Sửa Sản Phẩm</a>
-                                    <hr />
-                                    <a style="text-align: center; padding: 5px 0; color: #fff; border-radius: 5px; " href="/Admin/Product/Delete?MaSP/@item.MaSP" class="btn-danger">Xóa Sản Phẩm</a>
-                                </div>
-                            </td>
-                        </tr>
-                         }
+                <div>
+                    <a style="color: #fff;text-align:center;padding:5px 0 2px 0 ;position:relative;top:-60px;left:800px; border-radius: 5px;" href="/Admin/Product/Create" class="btn-success">
+                        Thêm Sản Phẩm
+                    </a>
+                </div>
+                <div class="table-responsive" style="width:100%;">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Mã Sản Phẩm</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Hình ảnh</th>
+                                <th>Giá</th>
+                                <th>Số Lượng Có</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                            <tr>
+                                <td>@item.MaSP</td>
+                                <td>@item.TenSP</td>
+                                <td>
+                                    <img style="max-width: 100%; width: 250px; " class="image_product" src="~/Assest/Admin/img/images/@item.Anh" />
+                                </td>
+                                <td>@Html.DisplayFor(Model => item.GiaHT) VNĐ</td>
+                                <td>@item.SoLuongCo</td>
+                                <td colspan="4">
+                                    <div style="display:flex;flex-direction:column;">
+
+                                        <hr />
+                                        <a style="text-align: center; padding: 5px 0; color: #fff; border-radius: 5px;" href="/Admin/Product/Edit?MaSP/@item.MaSP" class="btn-warning">Sửa Sản Phẩm</a>
+                                        <hr />
+                                        <a style="text-align: center; padding: 5px 0; color: #fff; border-radius: 5px; " href="/Admin/Product/Delete?MaSP/@item.MaSP" class="btn-danger">Xóa Sản Phẩm</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            }
                         </tbody>
                     </table>
-                <div style="display:flex;justify-content:space-around">
-                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString }))
+                    <div style="display:flex;justify-content:space-around">
+                        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString }))
+                    </div>
                 </div>
-            </div>
             </div>
         </div>
 

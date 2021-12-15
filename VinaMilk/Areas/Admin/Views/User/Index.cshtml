@@ -25,54 +25,56 @@
                         </div>
                     </div>
                 }
-                <div class="table-responsive" style="width:100%;">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th>Tài Khoản</th>
-                                <th style="text-align:center;">Họ tên</th>
-                                <th>Email</th>
-                                <th>SĐT</th>
-                                <th>Địa chỉ</th>
-                                <th>Phân Quyền</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model)
-                            {
-
+                <div>
+                    <a style="padding: 5px; color: #fff; position: relative; top: -60px; left: 800px; border-radius: 5px;" href="/Admin/User/Create" class="btn-success">
+                        Thêm tài khoản
+                    </a>
+                </div>
+                    <div class="table-responsive" style="width:100%;">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
                                 <tr>
-                                    <td>@item.TenTK</td>
-                                    <td>@item.HoTen</td>
-                                    <td>@item.Email</td>
-                                    <td>@item.SDT</td>
-                                    <td>@item.Dia_Chi</td>
-                                    @if (@item.Quyen == 0)
-                                    {
-                                        <td>Khách Hàng</td>
-                                    }
-                                    else
-                                    {
-                                        <td>Quản Trị Website</td>
-                                    }
+                                    <th>Tài Khoản</th>
+                                    <th style="text-align:center;">Họ tên</th>
+                                    <th>Email</th>
+                                    <th>SĐT</th>
+                                    <th>Địa chỉ</th>
+                                    <th>Phân Quyền</th>
                                 </tr>
-                                        <td colspan="6">
-                                            <a style="padding: 5px; color: #fff; margin-left: 20px; border-radius: 5px;" href="/Admin/User/Create" class="btn-success">
-                                                Thêm tài khoản
-                                            </a>
-                                            <a style="padding: 5px; color: #fff; margin-left: 25%; border-radius: 5px;" href="/Admin/User/Edit?tenTK/@item.TenTK" class="btn-warning">Sửa Tài Khoản</a>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
 
-                                            <a style="padding: 5px; color: #fff; margin-left: 25%; border-radius: 5px; " href="/Admin/User/Delete?tenTK/@item.TenTK" class="btn-danger">Xóa Tài Khoản</a>
-                                        </td>
-                             }
-                        </tbody>
-                        </table>
-                        <div style="display:flex;justify-content:space-around">
-                            @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString }))
+                                    <tr>
+                                        <td>@item.TenTK</td>
+                                        <td>@item.HoTen</td>
+                                        <td>@item.Email</td>
+                                        <td>@item.SDT</td>
+                                        <td>@item.Dia_Chi</td>
+                                        @if (@item.Quyen == 0)
+                                        {
+                                            <td>Khách Hàng</td>
+                                        }
+                                        else
+                                        {
+                                            <td>Quản Trị Website</td>
+                                        }
+                                    </tr>
+                                <td colspan="6">
+                                    <a style="padding: 5px; color: #fff; margin-left: 25%; border-radius: 5px;" href="/Admin/User/Edit?tenTK/@item.TenTK" class="btn-warning">Sửa Tài Khoản</a>
+
+                                    <a style="padding: 5px; color: #fff; margin-left: 25%; border-radius: 5px; " href="/Admin/User/Delete?tenTK/@item.TenTK" class="btn-danger">Xóa Tài Khoản</a>
+                                </td>
+                            }
+                                </tbody>
+                            </table>
+                            <div style="display:flex;justify-content:space-around">
+                                @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString }))
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
         </div>
 </div>

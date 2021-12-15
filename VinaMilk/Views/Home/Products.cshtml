@@ -19,31 +19,28 @@
                     <th>Tên sản phẩm</th>
                     <th>Giá</th>
                     <th>Mô Tả</th>
-                    <th>Số Lượng Còn</th>
-
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model)
                 {
 
-                    <tr>
-                        <td>
-                            <img style="max-width: 100%; width: 200px; " class="image_product" src="~/Assest/Admin/img/images/@item.Anh" />
-                        </td>
-                        <td>
-                            @item.TenSP
-                        </td>
-                        <td>
-                            @Html.DisplayFor(Model => item.GiaHT) VNĐ
-                        </td>
-                        <td style="width:200px;">
-                            @item.MoTa
-                        </td>
-                        <td>
-                            @item.SoLuongCo
-                        </td>
-                    </tr>
+                        <tr>
+                            <td>
+                                <img style="max-width: 100%; width: 200px; " class="image_product" src="~/Assest/Admin/img/images/@item.Anh" />
+                            </td>
+                            <td>
+                                @item.TenSP
+                            </td>
+                            <td>
+                                @Html.DisplayFor(Model => item.GiaHT) VNĐ
+                            </td>
+                            <td style="width:200px;">
+                                @item.MoTa
+                            </td>
+                            <th></th>
+                        </tr>
                 }
             </tbody>
         </table>

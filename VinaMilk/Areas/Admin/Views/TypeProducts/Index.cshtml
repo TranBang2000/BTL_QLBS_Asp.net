@@ -25,40 +25,45 @@
                         </div>
                     </div>
                 }
-            <div class="table-responsive" style="width:100%;">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>Mã loại</th>
-                            <th>Tên Loại</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
-
+            <div>
+                <a style="color: #fff;text-align:center;padding:5px 0 2px 0 ;position:relative;top:-60px;left:800px; border-radius: 5px;" href="/Admin/TypeProducts/Create" class="btn-success">
+                    Thêm Danh Mục
+                </a>
+            </div>
+                <div class="table-responsive" style="width:100%;">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
                             <tr>
-                                <td>@item.MaDM</td>
-                                <td>
-                                    <span style="padding: 0px;" class="block-email">@item.TenDM</span>
-                                </td>
+                                <th>Mã loại</th>
+                                <th>Tên Loại</th>
+                                <th></th>
                             </tr>
-                        <td colspan="3">
-                            <a style="padding: 5px; color: #fff; margin-left: 20px; border-radius: 5px;" href="/Admin/TypeProducts/Create" class="btn-success">
-                                Thêm Danh Mục
-                            </a>
-                            <a style="padding: 5px; color: #fff; margin-left: 25%; border-radius: 5px;" href="/Admin/TypeProducts/Edit?maDM/@item.MaDM" class="btn-warning">Sửa Danh Mục</a>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
 
-                            <a style="padding: 5px; color: #fff; margin-left: 25%; border-radius: 5px; " href="/Admin/TypeProducts/Delete?maDM/@item.MaDM" class="btn-danger">Xóa Danh Mục</a>
-                        </td>
-                    }
-                        </tbody>
-                    </table>
-                    <div style="display:flex;justify-content:space-around">
-                        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString }))
+                                <tr>
+                                    <td>@item.MaDM</td>
+                                    <td>
+                                        <span style="padding: 0px;" class="block-email">@item.TenDM</span>
+                                    </td>
+                                </tr>
+                            <td colspan="3">
+                                @*<a style="padding: 5px; color: #fff; margin-left: 20px; border-radius: 5px;" href="/Admin/TypeProducts/Create" class="btn-success">
+                            Thêm Danh Mục
+                        </a>*@
+                                <a style="padding: 5px; color: #fff; margin-left: 25%; border-radius: 5px;" href="/Admin/TypeProducts/Edit?maDM/@item.MaDM" class="btn-warning">Sửa Danh Mục</a>
+
+                                <a style="padding: 5px; color: #fff; margin-left: 25%; border-radius: 5px; " href="/Admin/TypeProducts/Delete?maDM/@item.MaDM" class="btn-danger">Xóa Danh Mục</a>
+                            </td>
+                        }
+                            </tbody>
+                        </table>
+                        <div style="display:flex;justify-content:space-around">
+                            @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString }))
+                        </div>
                     </div>
-                </div>
                 </div>
             </div>
 

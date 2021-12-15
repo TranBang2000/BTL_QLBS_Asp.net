@@ -117,9 +117,10 @@ namespace VinaMilk.Areas.Admin.Controllers
             ViewBag.email = sessionUser.email;
             return View(product);
         }
-        [HttpPost]
+        [HttpPost, ActionName("Delete")]
         public ActionResult Delete(string MaSP, string TenSP)
         {
+            SanPham hang = db.SanPhams.Find(MaSP);
             var user = db.SanPhams.SingleOrDefault(x => x.MaSP == MaSP);
             try
             {
