@@ -16,7 +16,7 @@ namespace Models.DAO
             db = new VinaMilkDbContext();
 
         }
-        public string Insert(TaiKhoan entity)
+        public string Insert(TaiKhoan1 entity)
         {
             db.TaiKhoans.Add(entity);
             db.SaveChanges();
@@ -29,11 +29,11 @@ namespace Models.DAO
             throw new NotImplementedException();
         }
 
-        public TaiKhoan GetByID(string tenTK)
+        public TaiKhoan1 GetByID(string tenTK)
         {
             return db.TaiKhoans.FirstOrDefault(x => x.TenTK == tenTK);
         }
-        public IEnumerable<TaiKhoan> GetAllTaiKhoan()
+        public IEnumerable<TaiKhoan1> GetAllTaiKhoan()
         {
             return db.TaiKhoans.Select(x => x);
         }
@@ -63,9 +63,9 @@ namespace Models.DAO
                 }
             }
         }
-        public IEnumerable<TaiKhoan> ListAllPaging(string searchString,int page, int pageSize)
+        public IEnumerable<TaiKhoan1> ListAllPaging(string searchString,int page, int pageSize)
         {
-            IQueryable<TaiKhoan> model = db.TaiKhoans;
+            IQueryable<TaiKhoan1> model = db.TaiKhoans;
             if (!string.IsNullOrEmpty(searchString))
             {
                 model = model.Where(x => x.TenTK.Contains(searchString) || x.HoTen.Contains(searchString));

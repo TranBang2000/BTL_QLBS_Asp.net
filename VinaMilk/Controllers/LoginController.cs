@@ -86,7 +86,7 @@ namespace VinaMilk.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new TaiKhoan();
+                var user = new TaiKhoan1();
                 user.TenTK = model.userName;
                 user.HoTen = model.Name;
                 user.SDT = model.PhoneNumbers;

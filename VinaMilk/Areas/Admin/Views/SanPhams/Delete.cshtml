@@ -1,0 +1,57 @@
+﻿@model VinaMilk.Models.SanPham
+
+@{
+    ViewBag.Title = "Xóa Sản Phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h3 style="text-align:center">Bạn có chắc chắn muốn xóa sản phẩm này?</h3>
+<hr />
+<div class="table-responsive" style="width:100%;">
+    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Tên Danh Mục</th>
+                <th>Tên Sản Phẩm</th>
+                <th>Ảnh</th>
+                <th>Số Lượng Có</th>
+                <th>Giá</th>
+                <th>Mô Tả</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Html.DisplayFor(model => model.DanhMuc.TenDM)</td>
+                <td>@Html.DisplayFor(model => model.TenSP)</td>
+                <td>
+                    @{
+                        string ImagePath = "~/wwwroot/Images/" + Model.Anh;
+                    }
+                    <img src="@Url.Content(ImagePath)" width="300" class="img-thumbnail" />
+                    <br />
+                </td>
+                <td>@Html.DisplayFor(model => model.SoLuongCo)</td>
+                <td>@Html.DisplayFor(model => model.GiaHT)</td>
+                <td style="max-width:200px">@Html.DisplayFor(model => model.MoTa)</td>
+            </tr>
+        </tbody>
+    </table>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color" style="margin-left:450px">
+            <input type="submit" value="Xóa" class="btn btn-danger" /> |
+            @Html.ActionLink("Trở Về", "Index")
+        </div>
+    }
+</div>
+
+
+
+@if (ViewBag.Error != null)
+{
+    <br />
+    <div class="alert alert-danger" role="alert">@ViewBag.Error</div>
+}

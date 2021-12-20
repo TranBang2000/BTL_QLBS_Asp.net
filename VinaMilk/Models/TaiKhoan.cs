@@ -1,4 +1,4 @@
-﻿namespace Models.EF
+﻿namespace VinaMilk.Models
 {
     using System;
     using System.Collections.Generic;
@@ -7,10 +7,10 @@
     using System.Data.Entity.Spatial;
 
     [Table("TaiKhoan")]
-    public partial class TaiKhoan1
+    public partial class TaiKhoan
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TaiKhoan1()
+        public TaiKhoan()
         {
             HoaDon = new HashSet<HoaDon>();
         }
@@ -21,11 +21,11 @@
         public string TenTK { get; set; }
 
         [StringLength(50)]
-        [Required(ErrorMessage = "Mật Khẩu không được để trống")]
+        [Required(ErrorMessage = "Mật khẩu không được để trống")]
         public string Mat_Khau { get; set; }
 
         [StringLength(100)]
-        [Required(ErrorMessage = "Họ tên không được để trống")]
+        [Required(ErrorMessage = "Họ Tên không được để trống")]
         public string HoTen { get; set; }
 
         [StringLength(255)]

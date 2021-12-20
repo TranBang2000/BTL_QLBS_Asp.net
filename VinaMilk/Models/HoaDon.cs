@@ -1,4 +1,4 @@
-namespace Models.EF
+namespace VinaMilk.Models
 {
     using System;
     using System.Collections.Generic;
@@ -40,6 +40,6 @@ namespace Models.EF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GioHang> GioHang { get; set; }
 
-        public virtual TaiKhoan1 TaiKhoan { get; set; }
+        public virtual TaiKhoan TaiKhoan { get; set; }
     }
 }

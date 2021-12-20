@@ -52,9 +52,6 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="PagedList.EntityFramework, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\PagedList.EntityFramework.1.0.1\lib\net45\PagedList.EntityFramework.dll</HintPath>
-    </Reference>
     <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
     </Reference>
@@ -136,11 +133,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DanhMucsController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
-    <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
-    <Compile Include="Areas\Admin\Controllers\TypeProductsController.cs" />
-    <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SanPhamsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TaiKhoansController.cs" />
     <Compile Include="Areas\Admin\Data\LoginModel.cs" />
     <Compile Include="Common\CommonConstants.cs" />
     <Compile Include="Common\Encryptor.cs" />
@@ -151,6 +148,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DanhMuc.cs" />
+    <Compile Include="Models\GioHang.cs" />
+    <Compile Include="Models\HoaDon.cs" />
+    <Compile Include="Models\SanPham.cs" />
+    <Compile Include="Models\sysdiagrams.cs" />
+    <Compile Include="Models\TaiKhoan.cs" />
+    <Compile Include="Models\VinaMilkDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -2165,25 +2169,58 @@
     <Content Include="Areas\Admin\Views\Login\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\User\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\User\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\User\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\User\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Navigation.cshtml" />
-    <Content Include="Areas\Admin\Views\Product\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\TypeProducts\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Product\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Product\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Product\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\TypeProducts\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\TypeProducts\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\TypeProducts\Delete.cshtml" />
     <Content Include="Assest\Client\fonts\fontawesome-webfont.eot" />
     <Content Include="Assest\Client\fonts\fontawesome-webfont.ttf" />
     <Content Include="Assest\Client\fonts\fontawesome-webfont.woff" />
     <Content Include="Assest\Client\fonts\FontAwesome.otf" />
     <Content Include="Assest\Client\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Assest\Client\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Areas\Admin\Views\TaiKhoans\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\TaiKhoans\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\TaiKhoans\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\TaiKhoans\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\TaiKhoans\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\DanhMucs\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\DanhMucs\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\DanhMucs\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\DanhMucs\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\DanhMucs\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\SanPhams\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\SanPhams\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\SanPhams\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\SanPhams\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\SanPhams\Index.cshtml" />
+    <Content Include="wwwroot\Images\1.jpg" />
+    <Content Include="wwwroot\Images\10.jpg" />
+    <Content Include="wwwroot\Images\100.jpg" />
+    <Content Include="wwwroot\Images\102.jpg" />
+    <Content Include="wwwroot\Images\103.jpg" />
+    <Content Include="wwwroot\Images\104.jpg" />
+    <Content Include="wwwroot\Images\10_1.jpg" />
+    <Content Include="wwwroot\Images\11.jpg" />
+    <Content Include="wwwroot\Images\12.jpg" />
+    <Content Include="wwwroot\Images\13.jpg" />
+    <Content Include="wwwroot\Images\14.jpg" />
+    <Content Include="wwwroot\Images\15.jpg" />
+    <Content Include="wwwroot\Images\16.jpg" />
+    <Content Include="wwwroot\Images\17.jpg" />
+    <Content Include="wwwroot\Images\18.jpg" />
+    <Content Include="wwwroot\Images\19.jpg" />
+    <Content Include="wwwroot\Images\2.jpg" />
+    <Content Include="wwwroot\Images\20.jpg" />
+    <Content Include="wwwroot\Images\21.jpg" />
+    <Content Include="wwwroot\Images\22.jpg" />
+    <Content Include="wwwroot\Images\3.jpg" />
+    <Content Include="wwwroot\Images\4.jpg" />
+    <Content Include="wwwroot\Images\5.jpg" />
+    <Content Include="wwwroot\Images\6.jpg" />
+    <Content Include="wwwroot\Images\7.jpg" />
+    <Content Include="wwwroot\Images\8.jpg" />
+    <Content Include="wwwroot\Images\9.jpg" />
+    <Content Include="wwwroot\Images\Avatar.jpg" />
+    <Content Include="wwwroot\Images\banner_home.jpg" />
+    <Content Include="wwwroot\Images\no-image-news.png" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2211,7 +2248,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\Base\" />
-    <Folder Include="Models\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Login\" />
   </ItemGroup>

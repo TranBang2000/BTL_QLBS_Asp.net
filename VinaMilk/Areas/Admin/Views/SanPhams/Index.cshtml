@@ -1,0 +1,102 @@
+﻿@*@model PagedList.IPagedList<VinaMilk.Models.SanPham>*@
+@using PagedList.Mvc;
+@using PagedList;
+@model IEnumerable<VinaMilk.Models.SanPham>
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Quản Lý Sản Phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-lg-12">
+        <h2 style="display: flex; justify-content: center; font-size: 35px; font-weight: 400">Quản Lý Sản Phẩm</h2>
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary"></h6>
+            </div>
+            <div class="card-body">
+                @using (Html.BeginForm())
+                {
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="col-md-4">
+                                <p>Tìm Kiếm Trong Cửa Hàng @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @style = "border-radius:10px;padding:5px 20px" })</p>
+                            </div>
+                            <div class="col-md-4">
+                                <button type="submit" value="Tìm Kiếm" style="margin: 10px 0; border-radius: 10px; border-color: #27f;color:#fff; width: 60px; background-color: #27f ">Tìm</button>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+                <div>
+                    <a style="background-color: antiquewhite;color: #27f; text-align: center; padding: 5px 0 2px 0; position: relative; top: -60px; left: 800px; border-radius: 5px;" href="/Admin/SanPhams/Create" class="btn-success">
+                        Thêm Sản Phẩm
+                    </a>
+                </div>
+                <div class="table-responsive" style="width:100%;">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+
+
+                                <th>Mã Sản Phẩm</th>
+                                <th>
+                                    @Html.ActionLink("Tên hàng", "Index", new { sortOder = ViewBag.SapTheoTen, currentFilter = ViewBag.currentFilter })
+                                </th>
+                                <th>Hình ảnh</th>
+                                <th>
+                                    @Html.ActionLink("Giá", "Index", new { sortOder = ViewBag.SapTheoGia, currentFilter = ViewBag.currentFilter })
+                                </th>
+                                <th>Số Lượng Có</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.MaSP</td>
+                                    <td>@item.TenSP</td>
+                                    <td>
+                                        @*<img style="max-width: 100%; width: 250px; " class="image_product" src="~/Assest/Admin/img/images/@item.Anh" />*@
+                                        <img style="max-width: 100%; width: 250px; " class="image_product" src="~/wwwroot/Images/@item.Anh" />
+
+                                    </td>
+                                    <td>@Html.DisplayFor(Model => item.GiaHT) VNĐ</td>
+                                    <td>@item.SoLuongCo</td>
+                                    <td colspan="6">
+                                        <div style="display:flex;flex-direction:column;">
+                                            <hr />
+                                            <div class="btn" style="background-color: antiquewhite">
+                                                @Html.ActionLink("Cập Nhật", "Edit", new { id = item.MaSP.Trim() }) |
+                                            </div>
+                                            <hr />
+                                            <div class="btn" style="background-color:bisque">
+                                                @Html.ActionLink("Xóa", "Delete", new { id = item.MaSP.Trim() }) |
+                                            </div>
+                                            <hr />
+                                            <div class="btn" style="background-color: antiquewhite">
+                                                @Html.ActionLink("Chi Tiết", "Details", new { id = item.MaSP.Trim() }) |
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<br />
+@*Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index", new
+{
+    page,
+    sortOrder = ViewBag.CurrentSort,
+ currentFilter = ViewBag.CurrentFilter
+}))*@

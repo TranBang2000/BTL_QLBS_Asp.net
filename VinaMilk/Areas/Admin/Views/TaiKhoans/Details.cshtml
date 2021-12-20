@@ -1,0 +1,36 @@
+﻿@model VinaMilk.Models.TaiKhoan
+
+@{
+    ViewBag.Title = "Xem Chi Tiết";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<h3>Chi Tiết Tài Khoản</h3>
+<div class="table-responsive" style="width:100%;">
+    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Tài Khoản</th>
+                <th>Mật Khẩu</th>
+                <th style="text-align:center;">Họ tên</th>
+                <th>Địa chỉ</th>
+                <th>SĐT</th>
+                <th>Email</th>
+                <th>Phân Quyền</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Html.DisplayFor(model => model.TenTK)</td>
+                <td>@Html.DisplayFor(model => model.Mat_Khau)</td>
+                <td>@Html.DisplayFor(model => model.HoTen)</td>
+                <td>@Html.DisplayFor(model => model.Dia_Chi)</td>
+                <td>@Html.DisplayFor(model => model.SDT)</td>
+                <td>@Html.DisplayFor(model => model.Email)</td>
+                <td>@Html.DisplayFor(model => model.Quyen)</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>
+        @Html.ActionLink("Cập Nhật", "Edit", new { id = Model.TenTK }) |
+        @Html.ActionLink("Trở Về", "Index")
+    </p>

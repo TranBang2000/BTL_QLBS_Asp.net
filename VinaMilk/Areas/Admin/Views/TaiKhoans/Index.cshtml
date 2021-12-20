@@ -1,0 +1,86 @@
+﻿@model IEnumerable<VinaMilk.Models.TaiKhoan>
+@*@model PagedList.IPagedList<VinaMilk.Models.TaiKhoan>*@
+@using PagedList.Mvc;
+@using PagedList;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Quản Lý Tài Khoản";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-lg-12">
+        <h2 style="display: flex; justify-content: center; font-size: 35px; font-weight: 400">Danh Sách Người Dùng</h2>
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary"></h6>
+            </div>
+            <div class="card-body">
+                @using (Html.BeginForm())
+                {
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="col-md-4">
+                                <p>Tìm Kiếm Trong Cửa Hàng @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @style = "border-radius:10px;padding:5px 20px" })</p>
+                            </div>
+                            <div class="col-md-4">
+                                <button type="submit" value="Tìm Kiếm" style="margin: 10px 0; border-radius: 10px; border-color: #27f;color:#fff; width: 60px; background-color: #27f ">Tìm</button>
+                            </div>
+                        </div>
+                    </div>
+                }
+                <div>
+                    <a style="background-color: bisque; color: #27f; text-align: center; padding: 5px 0 2px 0; position: relative; top: -60px; left: 800px; border-radius: 5px;" href="/Admin/TaiKhoans/Create" class="btn-success">
+                        Thêm Tài Khoản
+                    </a>
+                </div>
+                <div class="table-responsive" style="width:100%;">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th> @Html.ActionLink("Tên Tài Khoản", "Index", new { sortOder = ViewBag.SapTheoTenTK, currentFilter = ViewBag.currentFilter })</th>
+                                <th> @Html.ActionLink("Họ Tên", "Index", new { sortOder = ViewBag.SapTheoHoTen, currentFilter = ViewBag.currentFilter })</th>
+                                <th>Email</th>
+                                <th>SĐT</th>
+                                <th>Địa chỉ</th>
+                                <th>Phân Quyền</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.TenTK</td>
+                                    <td>@item.HoTen</td>
+                                    <td>@item.Email</td>
+                                    <td>@item.SDT</td>
+                                    <td>@item.Dia_Chi</td>
+                                    @if (@item.Quyen == 0)
+                                    {
+                                        <td>Khách Hàng</td>
+                                    }
+                                    else
+                                    {
+                                        <td>Quản Trị Website</td>
+                                    }
+                                </tr>
+                            <td colspan="6">
+                                <div class="btn" style="background-color: antiquewhite; margin-left: 200px">
+                                    @Html.ActionLink("Cập Nhật", "Edit", new { id = item.TenTK.Trim() }) |
+                                </div>
+                                <div class="btn" style="background-color:bisque; margin-left:200px">
+                                    @Html.ActionLink("Xóa", "Delete", new { id = item.TenTK.Trim() }) |
+                                </div>
+                                <div class="btn" style="background-color: antiquewhite; margin-left: 200px">
+                                    @Html.ActionLink("Chi Tiết", "Details", new { id = item.TenTK.Trim() }) |
+                                </div>
+                            </td>
+
+                        }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>

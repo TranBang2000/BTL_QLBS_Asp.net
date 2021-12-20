@@ -1,0 +1,46 @@
+﻿@model VinaMilk.Models.TaiKhoan
+
+@{
+    ViewBag.Title = "Xóa Tài Khoản Người Dùng";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h3 style="text-align:center">Bạn có chắc chắn muốn xóa tài khoản này?</h3>
+        <hr />
+        <div class="table-responsive" style="width:100%;">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Tài Khoản</th>
+                    <th>Mật Khẩu</th>
+                    <th style="text-align:center;">Họ tên</th>
+                    <th>Địa chỉ</th>
+                    <th>SĐT</th>
+                    <th>Email</th>
+                    <th>Phân Quyền</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@Html.DisplayFor(model=>model.TenTK)</td>
+                    <td>@Html.DisplayFor(model => model.Mat_Khau)</td>
+                    <td>@Html.DisplayFor(model => model.HoTen)</td>
+                    <td>@Html.DisplayFor(model => model.Dia_Chi)</td>
+                    <td>@Html.DisplayFor(model => model.SDT)</td>
+                    <td>@Html.DisplayFor(model => model.Email)</td>
+                    <td>@Html.DisplayFor(model => model.Quyen)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color" style="margin-left:450px">
+                <input type="submit" value="Xóa" class="btn btn-danger" /> |
+                @Html.ActionLink("Trở Về", "Index")
+            </div>
+        }
+    </div>
+

@@ -14,7 +14,7 @@ namespace Models.DAO
         {
             db = new VinaMilkDbContext();
         }
-        public string Insert(TaiKhoan entity)
+        public string Insert(TaiKhoan1 entity)
         {
             db.TaiKhoans.Add(entity);
             db.SaveChanges();
@@ -45,11 +45,11 @@ namespace Models.DAO
             throw new NotImplementedException();
         }
 
-        public TaiKhoan GetByUserName(string username)
+        public TaiKhoan1 GetByUserName(string username)
         {
             return db.TaiKhoans.SingleOrDefault(x => x.TenTK == username);
         }
-        public bool Update(TaiKhoan entity)
+        public bool Update(TaiKhoan1 entity)
         {
             try
             {

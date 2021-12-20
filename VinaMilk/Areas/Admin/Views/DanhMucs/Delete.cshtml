@@ -1,0 +1,45 @@
+﻿@model VinaMilk.Models.DanhMuc
+
+@{
+    ViewBag.Title = "Xóa Danh Mục";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div style="margin-top:100px">
+    <h3 style="text-align:center">Bạn có chắc chắn muốn xóa danh mục này?</h3>
+    <div style="width:96%; margin:20px auto 0px auto">
+        <div class="dl-horizontal" style=" margin-top:20px">
+            <div style="display:block">
+                <div>
+                    <hr />
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.LabelFor(model => model.TenDM, "Tên Danh Mục", htmlAttributes: new { @class = "control-label col-md-2" })
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.TenDM)
+                        </dd>
+
+                    </dl>
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-actions no-color">
+                            <input type="submit" value="Xóa" class="btn btn-danger" /> |
+                            @Html.ActionLink("Trở Về", "Index")
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@if (ViewBag.Error != null)
+{
+    <br />
+    <div class="alert alert-danger" role="alert">@ViewBag.Error</div>
+}

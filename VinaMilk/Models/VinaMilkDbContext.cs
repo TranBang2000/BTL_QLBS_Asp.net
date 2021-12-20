@@ -3,25 +3,24 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Linq;
 
-namespace Models.EF
+namespace VinaMilk.Models
 {
     public partial class VinaMilkDbContext : DbContext
     {
         public VinaMilkDbContext()
-            : base("name=VinaMilk")
+            : base("name=VinaMilkDbContexts")
         {
         }
 
-        public virtual DbSet<DanhMuc> DanhMucs { get; set; }
-        public virtual DbSet<GioHang> GioHangs { get; set; }
-        public virtual DbSet<HoaDon> HoaDons { get; set; }
-        public virtual DbSet<SanPham> SanPhams { get; set; }
-        public virtual DbSet<TaiKhoan1> TaiKhoans { get; set; }
-        //public object TaiKhoans { get; internal set; }
+        public virtual DbSet<DanhMuc> DanhMuc { get; set; }
+        public virtual DbSet<GioHang> GioHang { get; set; }
+        public virtual DbSet<HoaDon> HoaDon { get; set; }
+        public virtual DbSet<SanPham> SanPham { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<TaiKhoan> TaiKhoan { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-
             modelBuilder.Entity<DanhMuc>()
                 .HasMany(e => e.SanPham)
                 .WithRequired(e => e.DanhMuc)
@@ -37,15 +36,15 @@ namespace Models.EF
                 .WithRequired(e => e.SanPham)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<TaiKhoan1>()
+            modelBuilder.Entity<TaiKhoan>()
                 .Property(e => e.Mat_Khau)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<TaiKhoan1>()
+            modelBuilder.Entity<TaiKhoan>()
                 .Property(e => e.SDT)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<TaiKhoan1>()
+            modelBuilder.Entity<TaiKhoan>()
                 .Property(e => e.Email)
                 .IsUnicode(false);
         }
