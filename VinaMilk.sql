@@ -166,3 +166,4 @@ select * from SanPham
 select * from TaiKhoan
 select Anh from SanPham where MaSP=122
 
+select * from SanPham

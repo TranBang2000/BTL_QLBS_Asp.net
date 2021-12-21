@@ -20,7 +20,7 @@ namespace VinaMilk.Areas.Admin.Controllers
         public ActionResult Index(string sortOrder, string searchString, string currenFilter, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
-            ViewBag.SapTheoTen = String.IsNullOrEmpty(sortOrder) ? "ten_desc" : "";
+            ViewBag.SapTheoMa = String.IsNullOrEmpty(sortOrder) ? "ma_asc" : "";
             ViewBag.SapTheoGia = sortOrder == "gia" ? "gia_desc" : "gia";
             if (searchString != null)
             {
@@ -38,8 +38,8 @@ namespace VinaMilk.Areas.Admin.Controllers
             }
             switch (sortOrder)
             {
-                case "ten_desc":
-                    sanphams = sanphams.OrderByDescending(s => s.TenSP);
+                case "ma_asc":
+                    sanphams = sanphams.OrderByDescending(s => s.MaSP);
                     break;
                 case "gia":
                     sanphams = sanphams.OrderBy(s => s.GiaHT);
@@ -48,7 +48,7 @@ namespace VinaMilk.Areas.Admin.Controllers
                     sanphams = sanphams.OrderByDescending(s => s.GiaHT);
                     break;
                 default:
-                    sanphams = sanphams.OrderBy(s => s.TenSP);
+                    sanphams = sanphams.OrderBy(s => s.MaSP);
                     break;
             }
             int pageSize = 4;
@@ -89,25 +89,26 @@ namespace VinaMilk.Areas.Admin.Controllers
 
             try
             {
-                if (ModelState.IsValid)
+                if (true)
                 {
                     sanPham.Anh = "";
                     var f = Request.Files["ImageFile"];
                     if (f != null && f.ContentLength > 0)
                     {
                         string fileName = System.IO.Path.GetFileName(f.FileName);
-                        string uploadPath = Server.MapPath("~/wwwroot/Images" + fileName);
+                        string uploadPath = Server.MapPath("~/wwwroot/Images/" + fileName);
                         f.SaveAs(uploadPath);
                         sanPham.Anh = fileName;
                     }
+                    
                     db.SanPham.Add(sanPham);
                     db.SaveChanges();
                     setAlert("Thêm Mới Sản Phẩm Thành Công!", "success");
                     return RedirectToAction("Index");
                 }
 
-                ViewBag.MaDM = new SelectList(db.DanhMuc, "MaDM", "TenDM", sanPham.MaDM);
-                return View(sanPham);
+                //ViewBag.MaDM = new SelectList(db.DanhMuc, "MaDM", "TenDM", sanPham.MaDM);
+                //return View(sanPham);
             }
             catch (Exception ex)
             {
@@ -143,7 +144,7 @@ namespace VinaMilk.Areas.Admin.Controllers
         {
             try
             {
-                if (ModelState.IsValid)
+                if (true)
                 {
                     sanPham.Anh = "";
                     var f = Request.Files["ImageFile"];
@@ -157,8 +158,8 @@ namespace VinaMilk.Areas.Admin.Controllers
                     db.Entry(sanPham).State = EntityState.Modified;
                     db.SaveChanges();
                     setAlert("Cập Nhật Sản Phẩm Thành Công!", "success");
-                }
                 return RedirectToAction("Index");
+                }
                 ViewBag.MaDM = new SelectList(db.DanhMuc, "MaDM", "TenDM", sanPham.MaDM);
                 return View(sanPham);
             }
