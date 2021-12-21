@@ -5,8 +5,7 @@
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
-    using PagedList;
-    using PagedList.Mvc;
+
     [Table("SanPham")]
     public partial class SanPham
     {
@@ -36,7 +35,7 @@
         public string MoTa { get; set; }
 
         [Required(ErrorMessage = "Mã DM không được để trống")]
-        [StringLength(20)]
+        [StringLength(25)]
         public string MaDM { get; set; }
 
         public virtual DanhMuc DanhMuc { get; set; }

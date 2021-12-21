@@ -100,14 +100,14 @@ namespace VinaMilk.Areas.Admin.Controllers
                         f.SaveAs(uploadPath);
                         sanPham.Anh = fileName;
                     }
-                    
+
+                    ViewBag.MaDM = new SelectList(db.DanhMuc, "MaDM", "TenDM", sanPham.MaDM);
                     db.SanPham.Add(sanPham);
                     db.SaveChanges();
                     setAlert("Thêm Mới Sản Phẩm Thành Công!", "success");
                     return RedirectToAction("Index");
                 }
 
-                //ViewBag.MaDM = new SelectList(db.DanhMuc, "MaDM", "TenDM", sanPham.MaDM);
                 //return View(sanPham);
             }
             catch (Exception ex)
@@ -155,13 +155,13 @@ namespace VinaMilk.Areas.Admin.Controllers
                         f.SaveAs(uploadPath);
                         sanPham.Anh = fileName;
                     }
+                    ViewBag.MaDM = new SelectList(db.DanhMuc, "MaDM", "TenDM", sanPham.MaDM);
                     db.Entry(sanPham).State = EntityState.Modified;
                     db.SaveChanges();
                     setAlert("Cập Nhật Sản Phẩm Thành Công!", "success");
                 return RedirectToAction("Index");
                 }
-                ViewBag.MaDM = new SelectList(db.DanhMuc, "MaDM", "TenDM", sanPham.MaDM);
-                return View(sanPham);
+                //return View(sanPham);
             }
             catch (Exception ex)
             {
