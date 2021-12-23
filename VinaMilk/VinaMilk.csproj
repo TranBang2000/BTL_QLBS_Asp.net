@@ -2247,6 +2247,7 @@
     <Content Include="Views\Home\Products.cshtml" />
     <Content Include="Views\Login\LoginClient.cshtml" />
     <Content Include="Views\Login\RegisterClient.cshtml" />
+    <Content Include="Views\Shared\_ProductCategory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

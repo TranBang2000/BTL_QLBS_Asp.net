@@ -6,11 +6,16 @@
 }
 
 <div class="content">
-    @using (Html.BeginForm("SanPhams", "Home", FormMethod.Get))
+    @using (Html.BeginForm("Products", "Home", FormMethod.Get))
     {
         <input style="border-radius: 15px; width: 300px; padding: 10px; outline-color: #27f;border-color:#000" type="text" value="@ViewBag.SearchString" name="searchString" placeholder="Nhập Từ Khóa Tìm Kiếm..." />
         <button type="submit" value="Tìm Kiếm" style="margin: 10px 0; border-radius: 10px; border-color: #27f;color:#fff; width: 60px; background-color: #27f ">Tìm</button>
     }
+    <div style="display: flex; align-items: center; height: 50px;" class="conten_procs">
+        <h2 style="font-size: 18px; color: #92278f;" class="conten_procs_title">Trang chủ</h2>
+        <span style="display: block; font-size: 18px; margin: 0px 8px; color: #92278f;" class="conten_procs_icons">>></span>
+        <span style=" display: block; color: #92278f;" class="conten_procs_text">@ViewBag.tenDM</span>
+    </div>
     <div class="table-responsive" style="width:100%;">
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
