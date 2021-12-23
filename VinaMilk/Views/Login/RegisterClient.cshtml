@@ -1,0 +1,88 @@
+﻿@model VinaMilk.Models.LoginModel
+@{
+    ViewBag.Title = "Đăng Ký Tài Khoản";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content; modal; modal-content" style="width:600px;height:500px; position:relative;left:400px">
+    <div class="content_right">
+        <h3 style="margin-left:200px;margin-bottom:30px;margin-top:5px" class="content_right-title">Đăng ký tài khoản</h3>
+        <div class="content_customer">
+            @using (Html.BeginForm("RegisterClient", "Login", FormMethod.Post, htmlAttributes: new { @class = "form_infor", @style = "text-align: center;" }))
+            {
+                @Html.ValidationSummary(false, "")
+                <div class="form_infor-input">
+                    @Html.TextBoxFor(model => model.userName, htmlAttributes: new { @class = "text userName", @placeholder = "Tên tài khoản", @style = "padding-left: 5px;outline: none;;border-radius:8px;padding:8px;margin-top:10px;width:300px " })
+
+                </div>
+                <div class="form_infor-input">
+                    @Html.TextBoxFor(model => model.Name, htmlAttributes: new { @class = "text Name", @placeholder = "Họ tên", @style = "padding-left: 5px;outline: none;;border-radius:8px;padding:8px;margin-top:10px;width:300px " })
+
+                </div>
+                <div class="form_infor-input">
+                    @Html.TextBoxFor(model => model.PhoneNumbers, htmlAttributes: new { @class = "text PhoneNumbers", @placeholder = "Số điện thoại", @style = "padding-left: 5px;outline: none;;border-radius:8px;padding:8px;margin-top:10px;width:300px " })
+
+                </div>
+                <div class="form_infor-input">
+                    @Html.TextBoxFor(model => model.Adress, htmlAttributes: new { @class = "text Adress", @placeholder = "Địa chỉ", @style = "padding-left: 5px;outline: none;;border-radius:8px;padding:8px;margin-top:10px;width:300px " })
+
+                </div>
+                <div class="form_infor-input">
+                    @Html.TextBoxFor(model => model.Email, htmlAttributes: new { @class = "text Email", @placeholder = "Email", @style = "padding-left: 5px;outline: none;;border-radius:8px;padding:8px;margin-top:10px;width:300px " })
+
+                </div>
+                <div class="form_infor-input">
+                    @Html.PasswordFor(model => model.Password, htmlAttributes: new { @class = "text Password", @placeholder = "Mật khẩu", @style = "padding-left: 5px;outline: none;;border-radius:8px;padding:8px;margin-top:10px;width:300px " })
+
+                </div>
+                <button class="registerbtn" type="submit" style=" margin-top:5px;border-radius: 8px; padding: 8px;width: 80px; height: 32px; border: none; background-color: #92278f; color: #fff; font-size: 14px;">
+                    Đăng ký
+                </button>
+                <a href="/Home/Index" style=" text-decoration: none; font-size: 15px;">Hủy bỏ</a>
+            }
+        </div>
+
+
+    </div>
+
+
+
+</div>
+<script>
+    var registerbtn = document.querySelector('.registerbtn');
+    var userName = document.querySelector('.userName');
+    var Name = document.querySelector('.Name');
+    var PhoneNumbers = document.querySelector('.PhoneNumbers');
+    var Adress = document.querySelector('.Adress');
+    var Email = document.querySelector('.Email');
+    var password = document.querySelector('.Password');
+    registerbtn.addEventListener('click', () => {
+        if (userName.value == '') {
+            registerbtn.type = 'button';
+            alert('Vui lòng nhập tên tài khoản')
+        }
+        else if (Name.value == '') {
+            registerbtn.type = 'button';
+            alert('Vui lòng nhập họ và tên')
+        }
+        else if (PhoneNumbers.value == '') {
+            registerbtn.type = 'button';
+            alert('Vui lòng nhập số điện thoại')
+        }
+        else if (Adress.value == '') {
+            registerbtn.type = 'button';
+            alert('Vui lòng nhập địa chỉ')
+        }
+        else if (Email.value == '') {
+            registerbtn.type = 'button';
+            alert('Vui lòng nhập email')
+        }
+        else if (password.value == '') {
+            registerbtn.type = 'button';
+            alert('Vui lòng nhập mật khẩu')
+        }
+        else {
+            registerbtn.type = 'submit';
+        }
+    })
+</script>

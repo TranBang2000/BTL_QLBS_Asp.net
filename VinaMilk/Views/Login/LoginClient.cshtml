@@ -1,0 +1,54 @@
+﻿@model VinaMilk.Models.LoginModel
+@{
+    ViewBag.Title = "Đăng Nhập";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="content; modal; modal-content" style="width:600px;height:300px; position:relative;left:400px">
+
+    <div class="content_right">
+        <h3 style="margin-left:250px;margin-bottom:30px" class="content_right-title">Đăng nhập</h3>
+        <div class="content_customer">
+            @using (Html.BeginForm("LoginClient", "Login", FormMethod.Post, htmlAttributes: new { @class = "form_infor", @style = "text-align: center;" }))
+            {
+                @Html.ValidationSummary(false, "")
+                <div class="form_infor-input">
+                    @Html.TextBoxFor(model => model.userName, htmlAttributes: new { @class = "text userName", @placeholder = "Tên tài khoản", @style = "padding-left: 5px;outline: none;border-radius:8px;padding:8px;width:300px " })
+
+                </div>
+                <div class="form_infor-input">
+                    @Html.PasswordFor(model => model.Password, htmlAttributes: new { @class = "text Password", @placeholder = "Mật khẩu", @style = "padding-left: 5px;outline: none;border-radius:8px;margin-top:10px;padding:8px;width:300px " })
+
+                </div>
+                <button class="loginbtn" type="submit" style="border-radius: 8px; margin-top: 10px; padding: 8px;width: 100px; height: 50px; border: none; background-color: #92278f; color: #fff; font-size: 14px;">
+                    Đăng nhập
+                </button>
+                <a href="/Login/RegisterClient" style=" text-decoration: none; font-size: 15px;">| Đăng ký</a>
+            }
+        </div>
+
+
+    </div>
+
+
+
+</div>
+<script>
+    var loginbtn = document.querySelector('.loginbtn');
+    var userName = document.querySelector('.userName');
+    var password = document.querySelector('.Password');
+    loginbtn.addEventListener('click', () => {
+        if (userName.value == '') {
+            loginbtn.type = 'button';
+            alert('Vui lòng nhập tên tài khoản')
+        }
+        else if (password.value == '') {
+            loginbtn.type = 'button';
+            alert('Vui lòng nhập mật khẩu')
+        }
+        else {
+            loginbtn.type = 'submit';
+        }
+    })
+</script>

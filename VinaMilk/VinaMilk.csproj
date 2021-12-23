@@ -151,6 +151,7 @@
     <Compile Include="Models\DanhMuc.cs" />
     <Compile Include="Models\GioHang.cs" />
     <Compile Include="Models\HoaDon.cs" />
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\SanPham.cs" />
     <Compile Include="Models\sysdiagrams.cs" />
     <Compile Include="Models\TaiKhoan.cs" />
@@ -2244,12 +2245,13 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Products.cshtml" />
+    <Content Include="Views\Login\LoginClient.cshtml" />
+    <Content Include="Views\Login\RegisterClient.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\Base\" />
     <Folder Include="Views\Base\" />
-    <Folder Include="Views\Login\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

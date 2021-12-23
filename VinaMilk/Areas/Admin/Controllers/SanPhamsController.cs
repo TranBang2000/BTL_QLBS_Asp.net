@@ -54,7 +54,7 @@ namespace VinaMilk.Areas.Admin.Controllers
             int pageSize = 4;
             int pageNumber = (page ?? 1);
             //var sanPham = db.SanPham.Include(s => s.DanhMuc);
-            //return View(sanphams.ToPagedList(pageNumber,pageSize))
+            //return View(sanphams.ToPagedList(pageNumber, pageSize));
             return View(sanphams.ToList());
         }
         // GET: Admin/SanPhams/Details/5
@@ -159,7 +159,7 @@ namespace VinaMilk.Areas.Admin.Controllers
                     db.Entry(sanPham).State = EntityState.Modified;
                     db.SaveChanges();
                     setAlert("Cập Nhật Sản Phẩm Thành Công!", "success");
-                return RedirectToAction("Index");
+                    return RedirectToAction("Index");
                 }
                 //return View(sanPham);
             }

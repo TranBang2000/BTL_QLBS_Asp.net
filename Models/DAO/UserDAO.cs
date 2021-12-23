@@ -23,16 +23,15 @@ namespace Models.DAO
             return entity.TenTK;
 
         }
-
+        public TaiKhoan1 GetByID(string tenTK)
+        {
+            return db.TaiKhoans.FirstOrDefault(x => x.TenTK == tenTK);
+        }
         public object ListAllPaging2(int page, int pageSize)
         {
             throw new NotImplementedException();
         }
 
-        public TaiKhoan1 GetByID(string tenTK)
-        {
-            return db.TaiKhoans.FirstOrDefault(x => x.TenTK == tenTK);
-        }
         public IEnumerable<TaiKhoan1> GetAllTaiKhoan()
         {
             return db.TaiKhoans.Select(x => x);

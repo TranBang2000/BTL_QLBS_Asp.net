@@ -12,6 +12,8 @@ namespace VinaMilk.Controllers
 {
     public class LoginController : Controller
     {
+        
+
         // GET: Login
         public ActionResult Index()
         {
@@ -28,7 +30,7 @@ namespace VinaMilk.Controllers
             if (ModelState.IsValid)
             {
                 var dao = new UserClientDao();
-                var result = dao.Login(model.userName, Encryptor.MD5Hash(model.Password));
+                var result = dao.Login(model.userName, model.Password);
                 if (result == 1)
                 {
                     var user = dao.GetByUserName(model.userName);
@@ -44,6 +46,7 @@ namespace VinaMilk.Controllers
               
                 else if (result == 0)
                 {
+                    return RedirectToAction("Index", "Home");
                     ModelState.AddModelError("", "Tài khoản không tồn tại");
                 }
                 else if (result == -2)
@@ -92,7 +95,7 @@ namespace VinaMilk.Controllers
                 user.SDT = model.PhoneNumbers;
                 user.Dia_Chi = model.Adress;
                 user.Email = model.Email;
-                user.Mat_Khau = Encryptor.MD5Hash(model.PassWord);
+                user.Mat_Khau = model.PassWord;
                 if (user.TenTK.Length > 0)
                 {
                     VinaMilkDbContext db = new VinaMilkDbContext();
@@ -103,7 +106,7 @@ namespace VinaMilk.Controllers
                 return RedirectToAction("LoginClient", "Login");
             }
 
-            return View("RegisterClient");
+            return View("LoginClient");
         }
         public ActionResult Logout()
         {

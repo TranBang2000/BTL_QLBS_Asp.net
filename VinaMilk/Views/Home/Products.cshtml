@@ -6,13 +6,13 @@
 }
 
 <div class="content">
-    @using (Html.BeginForm("Products", "Home", FormMethod.Get))
+    @using (Html.BeginForm("SanPhams", "Home", FormMethod.Get))
     {
         <input style="border-radius: 15px; width: 300px; padding: 10px; outline-color: #27f;border-color:#000" type="text" value="@ViewBag.SearchString" name="searchString" placeholder="Nhập Từ Khóa Tìm Kiếm..." />
         <button type="submit" value="Tìm Kiếm" style="margin: 10px 0; border-radius: 10px; border-color: #27f;color:#fff; width: 60px; background-color: #27f ">Tìm</button>
     }
     <div class="table-responsive" style="width:100%;">
-        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" >
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
                 <tr>
                     <th>Hình ảnh</th>
@@ -26,21 +26,21 @@
                 @foreach (var item in Model)
                 {
 
-                        <tr>
-                            <td>
-                                <img style="max-width: 100%; width: 200px; " class="image_product" src="~/Assest/Admin/img/images/@item.Anh" />
-                            </td>
-                            <td>
-                                @item.TenSP
-                            </td>
-                            <td>
-                                @Html.DisplayFor(Model => item.GiaHT) VNĐ
-                            </td>
-                            <td style="width:200px;">
-                                @item.MoTa
-                            </td>
-                            <th></th>
-                        </tr>
+                    <tr>
+                        <td>
+                            <img style="max-width: 100%; width: 200px; " class="image_product" src="~/Assest/Admin/img/images/@item.Anh" />
+                        </td>
+                        <td>
+                            @item.TenSP
+                        </td>
+                        <td>
+                            @Html.DisplayFor(Model => item.GiaHT) VNĐ
+                        </td>
+                        <td style="width:200px;">
+                            @item.MoTa
+                        </td>
+                        <th></th>
+                    </tr>
                 }
             </tbody>
         </table>
@@ -48,5 +48,7 @@
             @Html.PagedListPager(Model, page => Url.Action("Products", new { page, @searchString = @ViewBag.SearchString }))
         </div>
     </div>
-
+    <div style="padding:10px;background-color:antiquewhite;width:80px;border-radius:8px;margin-left:30px">
+        @Html.ActionLink("Trở Về", "Index")
+    </div>
 </div>

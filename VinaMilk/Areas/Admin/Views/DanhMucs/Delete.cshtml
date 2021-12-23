@@ -5,30 +5,31 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-
 <div style="margin-top:100px">
     <h3 style="text-align:center">Bạn có chắc chắn muốn xóa danh mục này?</h3>
     <div style="width:96%; margin:20px auto 0px auto">
         <div class="dl-horizontal" style=" margin-top:20px">
             <div style="display:block">
                 <div>
-                    <hr />
-                    <dl class="dl-horizontal">
-                        <dt>
-                            @Html.LabelFor(model => model.TenDM, "Tên Danh Mục", htmlAttributes: new { @class = "control-label col-md-2" })
-                        </dt>
+                   <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                       <thead>
+                           <tr>
+                               <th>Mã Danh Mục</th>
+                               <td> @Html.DisplayFor(model => model.MaDM)</td>
+                           </tr>
+                           <tr>
+                               <th>Tên Danh Mục</th>
+                               <td> @Html.DisplayFor(model => model.TenDM)</td>
+                           </tr>
 
-                        <dd>
-                            @Html.DisplayFor(model => model.TenDM)
-                        </dd>
-
-                    </dl>
+                       </thead>
+                   </table>
 
                     @using (Html.BeginForm())
                     {
                         @Html.AntiForgeryToken()
 
-                        <div class="form-actions no-color">
+                        <div class="form-actions no-color" style="margin-left:420px">
                             <input type="submit" value="Xóa" class="btn btn-danger" /> |
                             @Html.ActionLink("Trở Về", "Index")
                         </div>
