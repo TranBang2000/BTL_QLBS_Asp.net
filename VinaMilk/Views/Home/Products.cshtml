@@ -1,5 +1,7 @@
 ﻿@model PagedList.IPagedList<Models.EF.SanPham>
 @using PagedList.Mvc
+
+
 @{
     ViewBag.Title = "Sản Phẩm";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -30,7 +32,6 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-
                     <tr>
                         <td>
                             <img style="max-width: 100%; width: 200px; " class="image_product" src="~/Assest/Admin/img/images/@item.Anh" />
@@ -51,6 +52,7 @@
         </table>
         <div style="display:flex;justify-content:space-around">
             @Html.PagedListPager(Model, page => Url.Action("Products", new { page, @searchString = @ViewBag.SearchString }))
+
         </div>
     </div>
     <div style="padding:10px;background-color:antiquewhite;width:80px;border-radius:8px;margin-left:30px">

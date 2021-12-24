@@ -62,14 +62,14 @@ namespace Models.DAO
                 }
             }
         }
-        public IEnumerable<TaiKhoan1> ListAllPaging(string searchString,int page, int pageSize)
+        public IEnumerable<TaiKhoan1> ListAllPaging(string searchString, int page, int pageSize)
         {
             IQueryable<TaiKhoan1> model = db.TaiKhoans;
             if (!string.IsNullOrEmpty(searchString))
             {
                 model = model.Where(x => x.TenTK.Contains(searchString) || x.HoTen.Contains(searchString));
             }
-            return model.OrderBy(x=>x.TenTK).ToPagedList(page,pageSize);
+            return model.OrderBy(x => x.TenTK).ToPagedList(page, pageSize);
         }
         public IEnumerable<DanhMuc> ListAllPaging1(string searchString, int page, int pageSize)
         {
@@ -80,16 +80,31 @@ namespace Models.DAO
             }
             return model.OrderBy(x => x.MaDM).ToPagedList(page, pageSize);
         }
-        public IEnumerable<SanPham> ListAllPaging2(string searchString, int page, int pageSize)
+        //public IEnumerable<SanPham> ListAllPaging2(string searchString, int page, int pageSize)
+        //{
+        //    IQueryable<SanPham> model = db.SanPhams;
+        //    if (!string.IsNullOrEmpty(searchString))
+        //    {
+        //        model = model.Where(x => x.MaSP.Contains(searchString) || x.TenSP.Contains(searchString));
+        //    }
+        //    return model.OrderBy(x => x.MaSP).ToPagedList(page, pageSize);
+        //}
+        public IEnumerable<SanPham> ListAllPaging2(string id,string searchString, int page, int pageSize)
         {
-            IQueryable<SanPham> model = db.SanPhams;
-            if (!string.IsNullOrEmpty(searchString))
+            List<SanPham> sp = new List<SanPham>();
+            if (id == null)
             {
-                model = model.Where(x => x.MaSP.Contains(searchString) || x.TenSP.Contains(searchString));
+                sp = db.SanPhams.Select(s => s).ToList();
             }
-            return model.OrderBy(x => x.MaSP).ToPagedList(page, pageSize);
+            else
+            {
+                //Lấy hàng theo mã nhà cugn cấp được chọn
+                sp = db.SanPhams.Where(s => s.MaDM.Equals(id)).Select(s => s).ToList();
+            }
+            return sp.ToList().ToPagedList(page,pageSize);
         }
 
-    }
+    } 
+        
 }
 

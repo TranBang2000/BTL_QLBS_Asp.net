@@ -1,9 +1,12 @@
 ﻿@model PagedList.IPagedList<Models.EF.DanhMuc>
 @using PagedList.Mvc;
+
 @{
     ViewBag.Title = "Trang Chủ";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+
 <div class="banner">
     <div class="w3l_banner_nav_left">
         <nav class="navbar nav_bottom">
@@ -21,7 +24,8 @@
                 <ul class="nav navbar-nav nav_1">
                     @foreach (var item in Model)
                     {
-                        <li><a href="~/Home/Products/?maDM=@item.MaDM">@item.TenDM </a></li>
+                        @*<li><a href="~/Home/Products/?maDM=@item.MaDM">@item.TenDM </a></li>*@
+                        <a class="navbar-brand" href="@Url.Action("Products", "Home", new { id=item.MaDM.Trim()})">@Html.DisplayFor(modelItem => item.TenDM)</a>
                     }
 
                 </ul>
