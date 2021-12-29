@@ -1,20 +1,20 @@
 ﻿@model PagedList.IPagedList<Models.EF.SanPham>
 @using PagedList.Mvc
-
+@using PagedList;
 
 @{
     ViewBag.Title = "Sản Phẩm";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<div class="content">
-    @using (Html.BeginForm("Products", "Home", FormMethod.Get))
-    {
-        <input style="border-radius: 15px; width: 300px; padding: 10px; outline-color: #27f;border-color:#000" type="text" value="@ViewBag.SearchString" name="searchString" placeholder="Nhập Từ Khóa Tìm Kiếm..." />
-        <button type="submit" value="Tìm Kiếm" style="margin: 10px 0; border-radius: 10px; border-color: #27f;color:#fff; width: 60px; background-color: #27f ">Tìm</button>
+<style type="text/css">
+    .image_product:hover{
+        opacity:0.7;
+        cursor:pointer;
     }
+</style>
+<div class="content">
     <div style="display: flex; align-items: center; height: 50px;" class="conten_procs">
-        <h2 style="font-size: 18px; color: #92278f;" class="conten_procs_title">Trang chủ</h2>
+        <h2 style="font-size: 16px; color: brown;" class="conten_procs_title">Sản Phẩm Theo Danh Mục</h2>
         <span style="display: block; font-size: 18px; margin: 0px 8px; color: #92278f;" class="conten_procs_icons">>></span>
         <span style=" display: block; color: #92278f;" class="conten_procs_text">@ViewBag.tenDM</span>
     </div>
@@ -34,7 +34,7 @@
                 {
                     <tr>
                         <td>
-                            <img style="max-width: 100%; width: 200px; " class="image_product" src="~/Assest/Admin/img/images/@item.Anh" />
+                            <img style="max-width: 100%; width: 200px; border-radius: 10px; " class="image_product" src="~/Assest/Admin/img/images/@item.Anh" />
                         </td>
                         <td>
                             @item.TenSP

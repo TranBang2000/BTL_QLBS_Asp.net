@@ -20,8 +20,8 @@ namespace VinaMilk.Areas.Admin.Controllers
         public ActionResult Index(string sortOrder, string searchString, string currenFilter, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
-            ViewBag.SapTheoTen = String.IsNullOrEmpty(sortOrder) ? "ten_desc" : "";
-            ViewBag.SapTheoMa = sortOrder == "ma" ? "ma_desc" : "ma";
+            ViewBag.SapTheoMa = String.IsNullOrEmpty(sortOrder) ? "ma_desc" : "";
+            ViewBag.SapTheoTen = sortOrder == "ten" ? "ten_desc" : "ten";
             if (searchString != null)
             {
                 page = 1;
@@ -36,24 +36,6 @@ namespace VinaMilk.Areas.Admin.Controllers
             {
                 danhmucs = danhmucs.Where(s => s.TenDM.Contains(searchString));
             }
-            switch (sortOrder)
-            {
-                case "ten_desc":
-                    danhmucs = danhmucs.OrderByDescending(s => s.TenDM);
-                    break;
-                case "ma":
-                    danhmucs = danhmucs.OrderBy(s => s.MaDM);
-                    break;
-                case "ma_desc":
-                    danhmucs = danhmucs.OrderByDescending(s => s.MaDM);
-                    break;
-                default:
-                    danhmucs = danhmucs.OrderBy(s => s.TenDM);
-                    break;
-            }
-            int pageSize = 4;
-            int pageNumber = (page ?? 1);
-            //return View(danhmucs.ToPagedList((pageNumber, pageSize)));
             return View(danhmucs.ToList());
             //return View(db.DanhMuc.ToList());
         }

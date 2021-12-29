@@ -80,15 +80,15 @@ namespace Models.DAO
             }
             return model.OrderBy(x => x.MaDM).ToPagedList(page, pageSize);
         }
-        //public IEnumerable<SanPham> ListAllPaging2(string searchString, int page, int pageSize)
-        //{
-        //    IQueryable<SanPham> model = db.SanPhams;
-        //    if (!string.IsNullOrEmpty(searchString))
-        //    {
-        //        model = model.Where(x => x.MaSP.Contains(searchString) || x.TenSP.Contains(searchString));
-        //    }
-        //    return model.OrderBy(x => x.MaSP).ToPagedList(page, pageSize);
-        //}
+        public IEnumerable<SanPham> ListAllPaging3(string searchString, int page, int pageSize)
+        {
+            IQueryable<SanPham> model = db.SanPhams;
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                model = model.Where(x => x.MaSP.Contains(searchString) || x.TenSP.Contains(searchString));
+            }
+            return model.OrderBy(x => x.MaSP).ToPagedList(page, pageSize);
+        }
         public IEnumerable<SanPham> ListAllPaging2(string id,string searchString, int page, int pageSize)
         {
             List<SanPham> sp = new List<SanPham>();
@@ -103,7 +103,7 @@ namespace Models.DAO
             }
             return sp.ToList().ToPagedList(page,pageSize);
         }
-
+      
     } 
         
 }

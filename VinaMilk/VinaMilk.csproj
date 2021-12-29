@@ -2219,6 +2219,7 @@
     <Content Include="wwwroot\Images\7.jpg" />
     <Content Include="wwwroot\Images\8.jpg" />
     <Content Include="wwwroot\Images\9.jpg" />
+    <Content Include="wwwroot\Images\arrow.png" />
     <Content Include="wwwroot\Images\Avatar.jpg" />
     <Content Include="wwwroot\Images\banner_home.jpg" />
     <Content Include="wwwroot\Images\no-image-news.png" />

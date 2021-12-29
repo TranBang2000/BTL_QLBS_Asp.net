@@ -6,9 +6,10 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
-using PagedList;
 using VinaMilk.Models;
 using System.Web.Mvc;
+using PagedList;
+using PagedList.Mvc;
 
 namespace VinaMilk.Areas.Admin.Controllers
 {
